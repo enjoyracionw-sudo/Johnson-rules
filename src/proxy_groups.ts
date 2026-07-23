@@ -326,16 +326,19 @@ export function buildProxyGroups({
             interval: 60,
             tolerance: 20,
         },
-        lowCostNodes.length > 0 || regexFilter
-            ? buildGroupByType({
-                  name: PROXY_GROUPS.LOW_COST,
-                  icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Lab.png`,
-                  groupType,
-                  nodeSource: !regexFilter
-                      ? { proxies: lowCostNodes.map((node) => node.name).filter(isNotNull) }
-                      : { "include-all": true as const, filter: LOW_COST_NODE_MATCHER.pattern },
-              })
-            : null,
+        buildGroupByType({
+            name: PROXY_GROUPS.LOW_COST,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Lab.png`,
+            groupType,
+            nodeSource: regexFilter
+                ? { "include-all": true as const, filter: LOW_COST_NODE_MATCHER.pattern }
+                : {
+                      proxies:
+                          lowCostNodes.length > 0
+                              ? lowCostNodes.map((node) => node.name).filter(isNotNull)
+                              : [...defaultFallback, PROXY_GROUPS.MANUAL, "DIRECT"],
+                  },
+        }),
         ...countryNames.map((country) => {
             const meta = countriesMeta[country];
             if (!meta) return null;
