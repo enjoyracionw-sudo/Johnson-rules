@@ -1,0 +1,138 @@
+name: Sync Upstream and Publish Dist
+
+"on":
+  schedule:
+    - cron: "0 20 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout fork
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Merge upstream main
+        run: |
+          git remote add upstream https://github.com/powerfullz/override-rules.git
+          git fetch upstream main
+          git merge --no-edit upstream/main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 25
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci || npm install --no-audit --no-fund
+
+      - name: Build artifacts
+        run: npm run artifacts
+
+      - name: Commit synced source changes
+        run: |
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No source changes to commit"
+          else
+            git commit -m "chore: sync upstream and apply custom rules"
+            git push origin HEAD:main
+          fi
+
+      - name: Assemble dist payload
+        run: |
+          set -euo pipefail
+
+          rm -rf publish
+          mkdir -p publish/yamls
+
+          cp convert.js publish/convert.js
+          cp convert.min.js publish/convert.min.js
+          cp -a yamls/. publish/yamls/
+
+          COMMIT="$(git rev-parse HEAD)"
+          RELEASED_AT="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+          export COMMIT
+          export RELEASED_AT
+
+          node <<'NODE'
+          const fs = require("node:fs");
+          const path = require("node:path");
+          const crypto = require("node:crypto");
+
+          const commit = process.env.COMMIT;
+          const releasedAt = process.env.RELEASED_AT;
+
+          function walkFiles(dir) {
+            const output = [];
+            const stack = [dir];
+            while (stack.length > 0) {
+              const current = stack.pop();
+              for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
+                if (entry.name === ".git") continue;
+                const fullPath = path.join(current, entry.name);
+                if (entry.isDirectory()) {
+                  stack.push(fullPath);
+                } else {
+                  output.push(fullPath);
+                }
+              }
+            }
+            return output.sort();
+          }
+
+          function sha256(filePath) {
+            const data = fs.readFileSync(filePath);
+            return crypto.createHash("sha256").update(data).digest("hex");
+          }
+
+          const files = walkFiles("publish")
+            .filter((filePath) => path.basename(filePath) !== "manifest.json")
+            .map((filePath) => ({
+              path: path.relative("publish", filePath).replace(/\\/g, "/"),
+              sha256: sha256(filePath),
+            }));
+
+          const manifest = {
+            tag: "dist",
+            commit,
+            releasedAt,
+            fileCount: files.length,
+            files,
+          };
+
+          fs.writeFileSync(
+            path.join("publish", "manifest.json"),
+            `${JSON.stringify(manifest, null, 2)}\n`,
+            "utf-8"
+          );
+          NODE
+
+      - name: Publish to dist branch
+        run: |
+          cd publish
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b dist
+          git add .
+          git commit -m "Auto-generated dist"
+          git remote add origin "https://${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git"
+          git push -f origin dist
+
+      - name: Purge jsDelivr cache
+        run: |
+          curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@dist/convert.min.js"
+          curl -fsS "https://purge.jsdelivr.net/gh/${{ github.repository }}@dist/manifest.json"

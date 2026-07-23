@@ -1,7 +1,72 @@
 import { CDN_URL } from "./constants";
 import type { RuleProvider } from "./types";
 
+const OS_RULE_BASE = `${CDN_URL}/gh/666OS/rules@release/mihomo`;
+
+function osDomain(name: string): RuleProvider {
+    return {
+        type: "http",
+        behavior: "domain",
+        format: "mrs",
+        interval: 86400,
+        url: `${OS_RULE_BASE}/domain/${name}.mrs`,
+        path: `./ruleset/666OS/domain/${name}.mrs`,
+    };
+}
+
+function osIP(name: string): RuleProvider {
+    return {
+        type: "http",
+        behavior: "ipcidr",
+        format: "mrs",
+        interval: 86400,
+        url: `${OS_RULE_BASE}/ip/${name}.mrs`,
+        path: `./ruleset/666OS/ip/${name}.mrs`,
+    };
+}
+
 export const ruleProviders: Record<string, RuleProvider> = {
+    Tracking: osDomain("Tracking"),
+    Advertising: osDomain("Advertising"),
+    Direct: osDomain("Direct"),
+    LocationDKS: osDomain("LocationDKS"),
+    Private: osDomain("Private"),
+    Download: osDomain("Download"),
+    Speedtest: osDomain("Speedtest"),
+    AI: osDomain("AI"),
+    Telegram: osDomain("Telegram"),
+    Twitter: osDomain("Twitter"),
+    SocialMedia: osDomain("SocialMedia"),
+    NewsMedia: osDomain("NewsMedia"),
+    Games: osDomain("Games"),
+    Crypto: osDomain("Crypto"),
+    Netflix: osDomain("Netflix"),
+    YouTube: osDomain("YouTube"),
+    XPTV: osDomain("XPTV"),
+    Emby: osDomain("Emby"),
+    Streaming: osDomain("Streaming"),
+    AppleCN: osDomain("AppleCN"),
+    Apple: osDomain("Apple"),
+    Google: osDomain("Google"),
+    Microsoft: osDomain("Microsoft"),
+    Facebook: osDomain("Facebook"),
+    Proxy: osDomain("Proxy"),
+    China: osDomain("China"),
+
+    AdvertisingIP: osIP("Advertising"),
+    PrivateIP: osIP("Private"),
+    AIIP: osIP("AI"),
+    TelegramIP: osIP("Telegram"),
+    SocialMediaIP: osIP("SocialMedia"),
+    XPTVIP: osIP("XPTV"),
+    EmbyIP: osIP("Emby"),
+    NetflixIP: osIP("Netflix"),
+    StreamingIP: osIP("Streaming"),
+    GoogleIP: osIP("Google"),
+    FacebookIP: osIP("Facebook"),
+    ProxyIP: osIP("Proxy"),
+    ChinaIP: osIP("China"),
+
     ADBlock: {
         type: "http",
         behavior: "domain",
@@ -81,14 +146,6 @@ export const ruleProviders: Record<string, RuleProvider> = {
         interval: 86400,
         url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/AdditionalCDNResources.list`,
         path: "./ruleset/AdditionalCDNResources.list",
-    },
-    Crypto: {
-        type: "http",
-        behavior: "classical",
-        format: "text",
-        interval: 86400,
-        url: `${CDN_URL}/gh/powerfullz/override-rules@master/ruleset/Crypto.list`,
-        path: "./ruleset/Crypto.list",
     },
     Weibo: {
         type: "http",

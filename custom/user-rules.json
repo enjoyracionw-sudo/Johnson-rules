@@ -1,0 +1,32 @@
+[
+  {
+    "type": "DOMAIN",
+    "value": "ykk.emby.moe",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
+    "value": "random.ouonet.org",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
+    "value": "server2.cn2gias.uk",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
+    "value": "server3.cn2gias.uk",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
+    "value": "s3.array2026.com",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
+    "value": "pc528.net",
+    "target": "DIRECT"
+  }
+]

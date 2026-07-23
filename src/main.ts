@@ -131,7 +131,7 @@ function main(config: ClashConfig): ClashConfig {
             "find-process-mode": "off",
             "log-level": "info",
             "geodata-loader": "standard",
-            "external-controller": ":9999",
+            "external-controller": "127.0.0.1:9999",
             "disable-keep-alive": !keepAliveEnabled,
             profile: { "store-selected": true },
         }),

@@ -6,8 +6,9 @@
   "license": "MIT",
   "type": "commonjs",
   "scripts": {
+    "apply:custom": "node scripts/apply-custom-rules.mjs",
     "typecheck": "tsgo --noEmit",
-    "build": "npm run typecheck && node scripts/build.mjs",
+    "build": "npm run apply:custom && npm run typecheck && node scripts/build.mjs",
     "generate": "tsx scripts/yaml_generator/generator.ts",
     "artifacts": "npm run build && npm run generate",
     "lint": "eslint .",

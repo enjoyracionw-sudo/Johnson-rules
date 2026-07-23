@@ -112,6 +112,18 @@ export function buildProxyGroups({
             proxies: defaultProxies,
         },
         {
+            name: PROXY_GROUPS.SPEEDTEST,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Speedtest.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
+            name: PROXY_GROUPS.LOCATION_DKS,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Null_Nation.png`,
+            type: "select",
+            proxies: defaultProxiesDirect,
+        },
+        {
             name: PROXY_GROUPS.AI_SERVICE,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png`,
             type: "select",
@@ -120,6 +132,18 @@ export function buildProxyGroups({
         {
             name: PROXY_GROUPS.CRYPTO,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_1.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
+            name: PROXY_GROUPS.DOWNLOAD,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Download.png`,
+            type: "select",
+            proxies: defaultProxiesDirect,
+        },
+        {
+            name: PROXY_GROUPS.GAMES,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Game.png`,
             type: "select",
             proxies: defaultProxies,
         },
@@ -174,6 +198,24 @@ export function buildProxyGroups({
             proxies: defaultProxies,
         },
         {
+            name: PROXY_GROUPS.EMBY,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Emby.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
+            name: PROXY_GROUPS.STREAMING,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
+            name: PROXY_GROUPS.NEWS_MEDIA,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Apple_News.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
             name: PROXY_GROUPS.TWITCH,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Twitch.png`,
             type: "select",
@@ -200,6 +242,12 @@ export function buildProxyGroups({
         {
             name: PROXY_GROUPS.TELEGRAM,
             icon: `${CDN_URL}/gh/powerfullz/override-rules@master/icons/Telegram.png`,
+            type: "select",
+            proxies: defaultProxies,
+        },
+        {
+            name: PROXY_GROUPS.SOCIAL_MEDIA,
+            icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/PBS.png`,
             type: "select",
             proxies: defaultProxies,
         },
