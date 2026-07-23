@@ -26,6 +26,16 @@
   },
   {
     "type": "DOMAIN",
+    "value": "neo.iflya321.com",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
+    "value": "cflocal.xxlb.net",
+    "target": "LOW_COST"
+  },
+  {
+    "type": "DOMAIN",
     "value": "pc528.net",
     "target": "DIRECT"
   }

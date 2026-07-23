@@ -7,6 +7,8 @@ const customRules = [
     `DOMAIN,server2.cn2gias.uk,${PROXY_GROUPS.LOW_COST}`,
     `DOMAIN,server3.cn2gias.uk,${PROXY_GROUPS.LOW_COST}`,
     `DOMAIN,s3.array2026.com,${PROXY_GROUPS.LOW_COST}`,
+    `DOMAIN,neo.iflya321.com,${PROXY_GROUPS.LOW_COST}`,
+    `DOMAIN,cflocal.xxlb.net,${PROXY_GROUPS.LOW_COST}`,
     `DOMAIN,pc528.net,DIRECT`,
     // CUSTOM_USER_RULES_END
 ];
