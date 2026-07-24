@@ -1,7 +1,7 @@
 import { CDN_URL } from "./constants";
 import type { RuleProvider } from "./types";
 
-const OS_RULE_BASE = `${CDN_URL}/gh/666OS/rules@release/mihomo`;
+const OS_RULE_BASE = `${CDN_URL}/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS`;
 
 function osDomain(name: string): RuleProvider {
     return {

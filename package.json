@@ -10,6 +10,7 @@
     "typecheck": "tsgo --noEmit",
     "build": "npm run apply:custom && npm run typecheck && node scripts/build.mjs",
     "generate": "tsx scripts/yaml_generator/generator.ts",
+    "mirror:rules": "node scripts/mirror-666os-rules.mjs",
     "artifacts": "npm run build && npm run generate",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

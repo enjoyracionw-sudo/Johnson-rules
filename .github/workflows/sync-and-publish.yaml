@@ -61,6 +61,7 @@ jobs:
           cp convert.js publish/convert.js
           cp convert.min.js publish/convert.min.js
           cp -a yamls/. publish/yamls/
+          node scripts/mirror-666os-rules.mjs publish/rules/666OS
 
           COMMIT="$(git rev-parse HEAD)"
           RELEASED_AT="$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
