@@ -35,7 +35,7 @@
     "target": "LOW_COST"
   },
   {
-    "type": "DOMAIN",
+    "type": "DOMAIN-SUFFIX",
     "value": "pc528.net",
     "target": "DIRECT"
   }
