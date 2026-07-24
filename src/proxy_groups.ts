@@ -329,15 +329,13 @@ export function buildProxyGroups({
         buildGroupByType({
             name: PROXY_GROUPS.LOW_COST,
             icon: `${CDN_URL}/gh/Koolson/Qure@master/IconSet/Color/Lab.png`,
-            groupType,
-            nodeSource: regexFilter
-                ? { "include-all": true as const, filter: LOW_COST_NODE_MATCHER.pattern }
-                : {
-                      proxies:
-                          lowCostNodes.length > 0
-                              ? lowCostNodes.map((node) => node.name).filter(isNotNull)
-                              : [...defaultFallback, PROXY_GROUPS.MANUAL, "DIRECT"],
-                  },
+            groupType: lowCostNodes.length > 0 ? groupType : 0,
+            nodeSource:
+                lowCostNodes.length > 0
+                    ? regexFilter
+                        ? { "include-all": true as const, filter: LOW_COST_NODE_MATCHER.pattern }
+                        : { proxies: lowCostNodes.map((node) => node.name).filter(isNotNull) }
+                    : { proxies: [...defaultFallback, PROXY_GROUPS.MANUAL, "DIRECT"] },
         }),
         ...countryNames.map((country) => {
             const meta = countriesMeta[country];
