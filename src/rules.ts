@@ -17,6 +17,11 @@ const baseRules = [
     `DST-PORT,22,${PROXY_GROUPS.SSH}`,
     `GEOIP,private,DIRECT,no-resolve`,
 
+    `DOMAIN-SUFFIX,hotjar.com,DIRECT`,
+    `DOMAIN-SUFFIX,hotjar.io,DIRECT`,
+    `DOMAIN-SUFFIX,contentsquare.com,DIRECT`,
+    `DOMAIN-SUFFIX,contentsquare.net,DIRECT`,
+
     `RULE-SET,Tracking,${PROXY_GROUPS.AD_BLOCK}`,
     `RULE-SET,Advertising,${PROXY_GROUPS.AD_BLOCK}`,
     `RULE-SET,ADBlock,${PROXY_GROUPS.AD_BLOCK}`,
