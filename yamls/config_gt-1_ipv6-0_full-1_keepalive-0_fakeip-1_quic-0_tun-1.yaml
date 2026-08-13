@@ -1,0 +1,859 @@
+mixed-port: 7890
+redir-port: 7892
+tproxy-port: 7893
+routing-mark: 7894
+allow-lan: true
+bind-address: "*"
+ipv6: false
+mode: rule
+unified-delay: true
+tcp-concurrent: true
+find-process-mode: off
+log-level: info
+geodata-loader: standard
+external-controller: 127.0.0.1:9999
+disable-keep-alive: true
+profile:
+  store-selected: true
+proxy-groups:
+  - name: 选择代理
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Proxy.png
+    type: select
+    proxies:
+      - 自动选择
+      - 故障转移
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 低倍率节点
+      - 手动选择
+      - DIRECT
+  - name: 手动选择
+    icon: https://cdn.jsdelivr.net/gh/shindgewongxj/WHATSINStash@master/icon/select.png
+    include-all: true
+    type: select
+  - name: 静态资源
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Cloudflare.png
+    type: select
+    proxies: &a1
+      - 选择代理
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 低倍率节点
+      - 手动选择
+      - DIRECT
+  - name: 网络测试
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Speedtest.png
+    type: select
+    proxies: *a1
+  - name: 抖快书定位
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Null_Nation.png
+    type: select
+    proxies: &a2
+      - DIRECT
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+      - 低倍率节点
+      - 选择代理
+      - 手动选择
+  - name: AI服务
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png
+    type: select
+    proxies: *a1
+  - name: 加密货币
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Cryptocurrency_1.png
+    type: select
+    proxies: *a1
+  - name: 下载服务
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Download.png
+    type: select
+    proxies: *a2
+  - name: 游戏平台
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Game.png
+    type: select
+    proxies: *a1
+  - name: 苹果服务
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple_2.png
+    type: select
+    proxies: *a1
+  - name: 谷歌服务
+    icon: https://cdn.jsdelivr.net/gh/Orz-3/mini@master/Color/Google.png
+    type: select
+    proxies: *a1
+  - name: 微软服务
+    icon: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Microsoft_Copilot.png
+    type: select
+    proxies: *a1
+  - name: Xbox
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Xbox.png
+    type: select
+    proxies: *a1
+  - name: Github
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/GitHub.png
+    type: select
+    proxies: *a1
+  - name: 哔哩哔哩
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/bilibili.png
+    type: select
+    proxies:
+      - DIRECT
+      - 台湾节点
+      - 香港节点
+  - name: 巴哈姆特
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Bahamut.png
+    type: select
+    proxies:
+      - 台湾节点
+      - 选择代理
+      - 手动选择
+      - DIRECT
+  - name: Youtube
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/YouTube.png
+    type: select
+    proxies: *a1
+  - name: Emby
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Emby.png
+    type: select
+    proxies: *a1
+  - name: 国际媒体
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/DomesticMedia.png
+    type: select
+    proxies: *a1
+  - name: 新闻媒体
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Apple_News.png
+    type: select
+    proxies: *a1
+  - name: Twitch
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Twitch.png
+    type: select
+    proxies: *a1
+  - name: Netflix
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Netflix.png
+    type: select
+    proxies: *a1
+  - name: TikTok
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/TikTok.png
+    type: select
+    proxies: *a1
+  - name: Spotify
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Spotify.png
+    type: select
+    proxies: *a1
+  - name: Telegram
+    icon: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Telegram.png
+    type: select
+    proxies: *a1
+  - name: 社交平台
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/PBS.png
+    type: select
+    proxies: *a1
+  - name: Twitter
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Twitter.png
+    type: select
+    proxies: *a1
+  - name: 新浪微博
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Weibo.png
+    type: select
+    include-all: true
+    proxies: *a2
+  - name: Truth Social
+    icon: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Truth_Social.png
+    type: select
+    proxies:
+      - 美国节点
+      - 选择代理
+      - 手动选择
+  - name: E-Hentai
+    icon: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Ehentai.png
+    type: select
+    proxies: *a1
+  - name: PikPak网盘
+    icon: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/PikPak.png
+    type: select
+    proxies: *a1
+  - name: 搜狗输入法
+    icon: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/icons/Sougou.png
+    type: select
+    proxies:
+      - DIRECT
+      - REJECT
+  - name: SSH
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Server.png
+    type: select
+    proxies: *a1
+  - name: 广告拦截
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/AdBlack.png
+    type: select
+    proxies:
+      - REJECT
+      - REJECT-DROP
+      - DIRECT
+  - name: Final
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Final.png
+    type: select
+    proxies:
+      - 选择代理
+      - DIRECT
+  - name: 自动选择
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Auto.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    proxies: &a3
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+    interval: 60
+    tolerance: 20
+  - name: 故障转移
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Available_1.png
+    type: fallback
+    url: https://cp.cloudflare.com
+    proxies: *a3
+    interval: 60
+    tolerance: 20
+  - name: 低倍率节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Lab.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    interval: 60
+    tolerance: 20
+    include-all: true
+    filter: (?i)0\.[0-5]|低倍率|省流|实验性
+  - name: 香港节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Hong_Kong.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    interval: 60
+    tolerance: 20
+    include-all: true
+    filter: 香港|港|\b(?:HK|hk)(?:[-_ ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|Hong
+      Kong|HongKong|hongkong|HONG
+      KONG|HONGKONG|深港|HKG|九龙|Kowloon|新界|沙田|荃湾|葵涌|🇭🇰
+  - name: 台湾节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Taiwan.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    interval: 60
+    tolerance: 20
+    include-all: true
+    filter: 台|新北|彰化|\b(?:TW|tw)(?:[-_ ]?\d+(?:[-_
+      ]?[A-Za-z]{2,})?)?\b|Taiwan|TAIWAN|TWN|TPE|ROC|🇹🇼|🇼🇸
+  - name: 新加坡节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Singapore.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    interval: 60
+    tolerance: 20
+    include-all: true
+    filter: 新加坡|坡|狮城|\b(?:SG|sg)(?:[-_ ]?\d+(?:[-_
+      ]?[A-Za-z]{2,})?)?\b|Singapore|SINGAPORE|SIN|🇸🇬
+  - name: 日本节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Japan.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    interval: 60
+    tolerance: 20
+    include-all: true
+    filter: 日本|川日|东京|大阪|泉日|埼玉|沪日|深日|\b(?:JP|jp)(?:[-_ ]?\d+(?:[-_
+      ]?[A-Za-z]{2,})?)?\b|Japan|JAPAN|JPN|NRT|HND|KIX|TYO|OSA|关西|Kansai|KANSAI|🇯🇵
+  - name: 美国节点
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/United_States.png
+    type: url-test
+    url: https://cp.cloudflare.com
+    interval: 60
+    tolerance: 20
+    include-all: true
+    filter: 美国|美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|纽约|亚特兰大|迈阿密|华盛顿|\b(?:US|us)(?:[-_
+      ]?\d+(?:[-_ ]?[A-Za-z]{2,})?)?\b|United States|UnitedStates|UNITED
+      STATES|USA|America|AMERICA|JFK|EWR|IAD|ATL|ORD|MIA|NYC|LAX|SFO|SEA|DFW|SJC|🇺🇸
+    exclude-filter: 美属|亚美尼亚|圣多美|普林西比
+  - name: GLOBAL
+    icon: https://cdn.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/Global.png
+    include-all: true
+    type: select
+    proxies:
+      - 选择代理
+      - 手动选择
+      - 静态资源
+      - 网络测试
+      - 抖快书定位
+      - AI服务
+      - 加密货币
+      - 下载服务
+      - 游戏平台
+      - 苹果服务
+      - 谷歌服务
+      - 微软服务
+      - Xbox
+      - Github
+      - 哔哩哔哩
+      - 巴哈姆特
+      - Youtube
+      - Emby
+      - 国际媒体
+      - 新闻媒体
+      - Twitch
+      - Netflix
+      - TikTok
+      - Spotify
+      - Telegram
+      - 社交平台
+      - Twitter
+      - 新浪微博
+      - Truth Social
+      - E-Hentai
+      - PikPak网盘
+      - 搜狗输入法
+      - SSH
+      - 广告拦截
+      - Final
+      - 自动选择
+      - 故障转移
+      - 低倍率节点
+      - 香港节点
+      - 台湾节点
+      - 新加坡节点
+      - 日本节点
+      - 美国节点
+rule-providers:
+  Tracking:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Tracking.mrs
+    path: ./ruleset/666OS/domain/Tracking.mrs
+  Advertising:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Advertising.mrs
+    path: ./ruleset/666OS/domain/Advertising.mrs
+  Direct:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Direct.mrs
+    path: ./ruleset/666OS/domain/Direct.mrs
+  LocationDKS:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/LocationDKS.mrs
+    path: ./ruleset/666OS/domain/LocationDKS.mrs
+  Private:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Private.mrs
+    path: ./ruleset/666OS/domain/Private.mrs
+  Download:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Download.mrs
+    path: ./ruleset/666OS/domain/Download.mrs
+  Speedtest:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Speedtest.mrs
+    path: ./ruleset/666OS/domain/Speedtest.mrs
+  AI:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/AI.mrs
+    path: ./ruleset/666OS/domain/AI.mrs
+  Telegram:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Telegram.mrs
+    path: ./ruleset/666OS/domain/Telegram.mrs
+  Twitter:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Twitter.mrs
+    path: ./ruleset/666OS/domain/Twitter.mrs
+  SocialMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/SocialMedia.mrs
+    path: ./ruleset/666OS/domain/SocialMedia.mrs
+  NewsMedia:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/NewsMedia.mrs
+    path: ./ruleset/666OS/domain/NewsMedia.mrs
+  Games:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Games.mrs
+    path: ./ruleset/666OS/domain/Games.mrs
+  Crypto:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Crypto.mrs
+    path: ./ruleset/666OS/domain/Crypto.mrs
+  Netflix:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Netflix.mrs
+    path: ./ruleset/666OS/domain/Netflix.mrs
+  YouTube:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/YouTube.mrs
+    path: ./ruleset/666OS/domain/YouTube.mrs
+  XPTV:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/XPTV.mrs
+    path: ./ruleset/666OS/domain/XPTV.mrs
+  Emby:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Emby.mrs
+    path: ./ruleset/666OS/domain/Emby.mrs
+  Streaming:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Streaming.mrs
+    path: ./ruleset/666OS/domain/Streaming.mrs
+  AppleCN:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/AppleCN.mrs
+    path: ./ruleset/666OS/domain/AppleCN.mrs
+  Apple:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Apple.mrs
+    path: ./ruleset/666OS/domain/Apple.mrs
+  Google:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Google.mrs
+    path: ./ruleset/666OS/domain/Google.mrs
+  Microsoft:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Microsoft.mrs
+    path: ./ruleset/666OS/domain/Microsoft.mrs
+  Facebook:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Facebook.mrs
+    path: ./ruleset/666OS/domain/Facebook.mrs
+  Proxy:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/Proxy.mrs
+    path: ./ruleset/666OS/domain/Proxy.mrs
+  China:
+    type: http
+    behavior: domain
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/domain/China.mrs
+    path: ./ruleset/666OS/domain/China.mrs
+  AdvertisingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Advertising.mrs
+    path: ./ruleset/666OS/ip/Advertising.mrs
+  PrivateIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Private.mrs
+    path: ./ruleset/666OS/ip/Private.mrs
+  AIIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/AI.mrs
+    path: ./ruleset/666OS/ip/AI.mrs
+  TelegramIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Telegram.mrs
+    path: ./ruleset/666OS/ip/Telegram.mrs
+  SocialMediaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/SocialMedia.mrs
+    path: ./ruleset/666OS/ip/SocialMedia.mrs
+  XPTVIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/XPTV.mrs
+    path: ./ruleset/666OS/ip/XPTV.mrs
+  EmbyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Emby.mrs
+    path: ./ruleset/666OS/ip/Emby.mrs
+  NetflixIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Netflix.mrs
+    path: ./ruleset/666OS/ip/Netflix.mrs
+  StreamingIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Streaming.mrs
+    path: ./ruleset/666OS/ip/Streaming.mrs
+  GoogleIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Google.mrs
+    path: ./ruleset/666OS/ip/Google.mrs
+  FacebookIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Facebook.mrs
+    path: ./ruleset/666OS/ip/Facebook.mrs
+  ProxyIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/Proxy.mrs
+    path: ./ruleset/666OS/ip/Proxy.mrs
+  ChinaIP:
+    type: http
+    behavior: ipcidr
+    format: mrs
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/enjoyracionw-sudo/Johnson-rules@dist/rules/666OS/ip/China.mrs
+    path: ./ruleset/666OS/ip/China.mrs
+  ADBlock:
+    type: http
+    behavior: domain
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/217heidai/adblockfilters@main/rules/adblockmihomolite.yaml
+    path: ./ruleset/ADBlock.yaml
+  SogouInput:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://ruleset.skk.moe/Clash/non_ip/sogouinput.txt
+    path: ./ruleset/SogouInput.txt
+  StaticResources:
+    type: http
+    behavior: domain
+    format: text
+    interval: 86400
+    url: https://ruleset.skk.moe/Clash/domainset/cdn.txt
+    path: ./ruleset/StaticResources.txt
+  CDNResources:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://ruleset.skk.moe/Clash/non_ip/cdn.txt
+    path: ./ruleset/CDNResources.txt
+  TikTok:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/TikTok.list
+    path: ./ruleset/TikTok.list
+  EHentai:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/EHentai.list
+    path: ./ruleset/EHentai.list
+  SteamFix:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/SteamFix.list
+    path: ./ruleset/SteamFix.list
+  GoogleFCM:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/FirebaseCloudMessaging.list
+    path: ./ruleset/FirebaseCloudMessaging.list
+  AdditionalFilter:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/AdditionalFilter.list
+    path: ./ruleset/AdditionalFilter.list
+  AdditionalCDNResources:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/AdditionalCDNResources.list
+    path: ./ruleset/AdditionalCDNResources.list
+  Weibo:
+    type: http
+    behavior: classical
+    format: text
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/powerfullz/override-rules@master/ruleset/Weibo.list
+    path: ./ruleset/Weibo.list
+  GFWList:
+    type: http
+    behavior: domain
+    format: yaml
+    interval: 86400
+    url: https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt
+    path: ./ruleset/GFWList.yaml
+rules:
+  - AND,((DST-PORT,443),(NETWORK,UDP)),REJECT
+  - DST-PORT,22,SSH
+  - GEOIP,private,DIRECT,no-resolve
+  - DOMAIN-SUFFIX,hotjar.com,DIRECT
+  - DOMAIN-SUFFIX,hotjar.io,DIRECT
+  - DOMAIN-SUFFIX,contentsquare.com,DIRECT
+  - DOMAIN-SUFFIX,contentsquare.net,DIRECT
+  - RULE-SET,Tracking,广告拦截
+  - RULE-SET,Advertising,广告拦截
+  - RULE-SET,ADBlock,广告拦截
+  - RULE-SET,AdditionalFilter,广告拦截
+  - RULE-SET,AdvertisingIP,广告拦截,no-resolve
+  - RULE-SET,SogouInput,搜狗输入法
+  - RULE-SET,Private,DIRECT
+  - RULE-SET,Direct,DIRECT
+  - RULE-SET,LocationDKS,抖快书定位
+  - RULE-SET,XPTV,DIRECT
+  - RULE-SET,Download,下载服务
+  - RULE-SET,AppleCN,DIRECT
+  - RULE-SET,SteamFix,DIRECT
+  - RULE-SET,GoogleFCM,DIRECT
+  - GEOSITE,google-cn,DIRECT
+  - GEOSITE,google-play@cn,DIRECT
+  - GEOSITE,microsoft@cn,DIRECT
+  - GEOSITE,category-games@cn,DIRECT
+  - GEOSITE,category-game-platforms-download,DIRECT
+  - GEOSITE,category-public-tracker,DIRECT
+  - RULE-SET,PrivateIP,DIRECT,no-resolve
+  - RULE-SET,XPTVIP,DIRECT,no-resolve
+  - DOMAIN,ykk.emby.moe,低倍率节点
+  - DOMAIN,random.ouonet.org,低倍率节点
+  - DOMAIN,server2.cn2gias.uk,低倍率节点
+  - DOMAIN,server3.cn2gias.uk,低倍率节点
+  - DOMAIN,s3.array2026.com,低倍率节点
+  - DOMAIN,neo.iflya321.com,低倍率节点
+  - DOMAIN,cflocal.xxlb.net,低倍率节点
+  - DOMAIN-SUFFIX,pc528.net,DIRECT
+  - DOMAIN-SUFFIX,truthsocial.com,Truth Social
+  - DOMAIN-KEYWORD,speedtest,网络测试
+  - RULE-SET,Speedtest,网络测试
+  - RULE-SET,StaticResources,静态资源
+  - RULE-SET,CDNResources,静态资源
+  - RULE-SET,AdditionalCDNResources,静态资源
+  - GEOSITE,openai,AI服务
+  - RULE-SET,AI,AI服务
+  - RULE-SET,AIIP,AI服务,no-resolve
+  - GEOSITE,category-ai-!cn,AI服务
+  - GEOSITE,bilibili,哔哩哔哩
+  - GEOSITE,bahamut,巴哈姆特
+  - RULE-SET,YouTube,Youtube
+  - GEOSITE,youtube,Youtube
+  - RULE-SET,Netflix,Netflix
+  - RULE-SET,NetflixIP,Netflix,no-resolve
+  - GEOSITE,netflix,Netflix
+  - GEOIP,netflix,Netflix,no-resolve
+  - RULE-SET,Emby,Emby
+  - RULE-SET,EmbyIP,Emby,no-resolve
+  - RULE-SET,Streaming,国际媒体
+  - RULE-SET,StreamingIP,国际媒体,no-resolve
+  - GEOSITE,twitch,Twitch
+  - GEOSITE,spotify,Spotify
+  - RULE-SET,TikTok,TikTok
+  - RULE-SET,NewsMedia,新闻媒体
+  - GEOSITE,apple-tvplus,国际媒体
+  - GEOSITE,disney,国际媒体
+  - GEOSITE,hbo,国际媒体
+  - GEOSITE,primevideo,国际媒体
+  - GEOSITE,category-entertainment,国际媒体
+  - RULE-SET,Telegram,Telegram
+  - RULE-SET,TelegramIP,Telegram,no-resolve
+  - GEOSITE,telegram,Telegram
+  - GEOIP,telegram,Telegram,no-resolve
+  - RULE-SET,Twitter,Twitter
+  - GEOSITE,twitter,Twitter
+  - RULE-SET,SocialMedia,社交平台
+  - RULE-SET,SocialMediaIP,社交平台,no-resolve
+  - RULE-SET,Facebook,社交平台
+  - RULE-SET,FacebookIP,社交平台,no-resolve
+  - RULE-SET,Weibo,新浪微博
+  - GEOSITE,xbox,Xbox
+  - GEOSITE,steam,游戏平台
+  - RULE-SET,Games,游戏平台
+  - GEOSITE,category-ecommerce,选择代理
+  - GEOSITE,github,Github
+  - RULE-SET,Crypto,加密货币
+  - RULE-SET,EHentai,E-Hentai
+  - GEOSITE,pikpak,PikPak网盘
+  - RULE-SET,Apple,苹果服务
+  - GEOSITE,apple,苹果服务
+  - RULE-SET,Microsoft,微软服务
+  - GEOSITE,microsoft,微软服务
+  - RULE-SET,Google,谷歌服务
+  - RULE-SET,GoogleIP,谷歌服务,no-resolve
+  - GEOSITE,google,谷歌服务
+  - RULE-SET,Proxy,选择代理
+  - RULE-SET,ProxyIP,选择代理,no-resolve
+  - RULE-SET,GFWList,选择代理
+  - RULE-SET,China,DIRECT
+  - RULE-SET,ChinaIP,DIRECT,no-resolve
+  - GEOIP,cn,DIRECT
+  - MATCH,Final
+sniffer:
+  sniff:
+    TLS:
+      ports:
+        - 443
+        - 8443
+    HTTP:
+      ports:
+        - 80
+        - 8080
+        - 8880
+    QUIC:
+      ports:
+        - 443
+        - 8443
+  override-destination: false
+  enable: true
+  force-dns-mapping: true
+  skip-domain:
+    - Mijia Cloud
+    - dlg.io.mi.com
+    - +.push.apple.com
+dns:
+  enable: true
+  ipv6: false
+  prefer-h3: true
+  enhanced-mode: fake-ip
+  default-nameserver:
+    - 119.29.29.29
+    - 223.5.5.5
+  nameserver:
+    - system
+    - 223.5.5.5
+    - 119.29.29.29
+    - 180.184.1.1
+  fallback:
+    - quic://dns0.eu
+    - https://dns.cloudflare.com/dns-query
+    - https://dns.sb/dns-query
+    - tcp://208.67.222.222
+    - tcp://8.26.56.2
+  proxy-server-nameserver:
+    - https://dns.alidns.com/dns-query
+    - tls://dot.pub
+  fake-ip-filter:
+    - geosite:private
+    - geosite:connectivity-check
+    - Mijia Cloud
+    - dig.io.mi.com
+    - localhost.ptlogin2.qq.com
+    - "*.icloud.com"
+    - "*.stun.*.*"
+    - "*.stun.*.*.*"
+tun:
+  enable: true
+  stack: gvisor
+  device: mihomo
+  route-exclude-address:
+    - 100.64.0.0/10
+    - fd7a:115c:a1e0::/48
+    - 192.168.0.0/16
+    - fd00::/8
+  dns-hijack:
+    - any:53
+  mtu: 1500
+geodata-mode: true
+geox-url:
+  geoip: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geoip.dat
+  geosite: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/geosite.dat
+  mmdb: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/country.mmdb
+  asn: https://cdn.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb
+
